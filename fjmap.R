@@ -24,7 +24,6 @@ frankenjura <- ger$NAME_2 == "Forchheim" |
 bamberg <- ger$NAME_3 == "Bamberg"
 bayreuth <- ger$NAME_3 == "Bayreuth"
 amberg <- ger$NAME_3 == "Amberg"
-krottensee <- ger$NAME_4 == "Neuhaus a.d. Pegnitz"
 
 minlon <- min(felsen["long"])
 minlat <- min(felsen["lat"])
@@ -46,9 +45,6 @@ bay_coords <- maps:::apply.polygon(bay_map, maps:::centroid.polygon)
 amb_map <- map_data(ger[amberg,])
 amb_coords <- maps:::apply.polygon(amb_map, maps:::centroid.polygon)
 
-neu_map <- map_data(ger[krottensee,])
-neu_coords <- maps:::apply.polygon(neu_map, maps:::centroid.polygon)
-
 base <- ggplot() +
   coord_cartesian() +
   xlab("") + ylab("") +
@@ -58,6 +54,6 @@ base <- ggplot() +
   geom_text(aes(label="Bayreuth"), x=bay_coords[[1]][1], y=bay_coords[[1]][2],size=3)
 
 fr_data <- base + cleanup + # stat_bin2d(bins=35, data=felsen, aes(x=long, y=lat)) + scale_fill_viridis(option="magma",trans="log",breaks=2^(0:6))
-  geom_hex(bins=25, data=routen, aes(x=long, y=lat, weight=count)) + scale_fill_viridis(breaks=2^(0:10),trans="log",option="magma")
+  geom_hex(bins=37,data=routen, aes(x=long, y=lat, weight=count)) + scale_fill_viridis(breaks=2^(0:10),trans="log",option="magma")
 
 fr_data
