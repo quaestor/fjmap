@@ -58,6 +58,6 @@ base <- ggplot() +
   geom_text(aes(label="Bayreuth"), x=bay_coords[[1]][1], y=bay_coords[[1]][2],size=3)
 
 fr_data <- base + cleanup + # stat_bin2d(bins=35, data=felsen, aes(x=long, y=lat)) + scale_fill_viridis(option="magma",trans="log",breaks=2^(0:6))
-  geom_hex(bins=25, data=routen, aes(x=long, y=lat, weight=count)) + scale_fill_viridis(option="magma")
+  geom_hex(bins=25, data=routen, aes(x=long, y=lat, weight=count)) + scale_fill_viridis(breaks=2^(0:10),trans="log",option="magma")
 
 fr_data
