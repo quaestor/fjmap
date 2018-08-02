@@ -34,7 +34,7 @@ maxlat <- max(felsen["lat"])
 cleanup <- 
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         panel.background = element_rect(fill = 'white', colour = 'white'), 
-        axis.line = element_line(colour = "white"), legend.position="none",
+        axis.line = element_line(colour = "white"), legend.position="left",
         axis.ticks=element_blank(), axis.text.x=element_blank(),
         axis.text.y=element_blank())
 
@@ -58,6 +58,6 @@ base <- ggplot() +
   geom_text(aes(label="Bayreuth"), x=bay_coords[[1]][1], y=bay_coords[[1]][2],size=3)
 
 fr_data <- base + cleanup + # stat_bin2d(bins=35, data=felsen, aes(x=long, y=lat)) + scale_fill_viridis(option="magma",trans="log",breaks=2^(0:6))
-  geom_hex(bins=25, data=felsen, aes(x=long, y=lat)) + scale_fill_viridis(trans="log",breaks=2^(0:6))
+  geom_hex(bins=25, data=routen, aes(x=long, y=lat, weight=count)) + scale_fill_viridis(option="magma")
 
 fr_data
