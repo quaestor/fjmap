@@ -4,7 +4,7 @@ library(hexbin)
 library(viridis)
 library(rgeos)
 
-ger <- readRDS("~/Downloads/gadm36_DEU_4_sp.rds")
+ger <- readRDS(file=url("https://biogeo.ucdavis.edu/data/gadm3.6/Rsp/gadm36_DEU_4_sp.rds"))
 routen <- read.csv("gps.data", sep="%")
 felsen <- unique(routen[3:4])
 
